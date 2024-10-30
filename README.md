@@ -1,26 +1,25 @@
-# MR-PLIP: Multi-Resolution Pathology-Language Model with Text-Guided Visual Representation
+# ConVLM: Context-Guided Vision-Language Model for Fine-Grained Histopathology Image Classification
 
-![MR-PLIP](./images/intro.png)
+![ConVLM](./images/methodolog_5.png)
 
 
 ### Abstract
-In Computational Pathology (CPath), the introduction of Vision-Language Models (VLMs) has opened new avenues for research, focusing primarily on aligning image text pairs at a single magnification level. However, this approach might not be sufficient for tasks like cancer subtype classification, tissue phenotyping, and survival analysis due to the limited level of detail that a single-resolution image can provide. Addressing this, we propose a novel multi-resolution paradigm leveraging Whole Slide Images (WSIs) to extract histology patches at multiple resolutions and generate corresponding textual descriptions through advanced CPath VLM. This method aims to capture a broader range of information, supported by novel loss functions, enriches feature representation, improves discriminative ability, and enhances generalization across different resolutions. Pre-trained on a comprehensive TCGA dataset with 34 million image-language pairs at various resolutions, our fine-tuned model outperforms State-Of-The-Art (SOTA) counterparts across multiple datasets and tasks, demonstrating its effectiveness in CPath.
-
+Vision-Language Models (VLMs) have recently demonstrated exceptional results across various Computational Pathology (CPath) tasks, such as Whole Slide Image (WSI) classification and survival prediction. These models utilize large-scale datasets to align images and text by incorporating language priors during pre-training. However, the separate training of text and vision encoders in current VLMs leads to only coarse-level alignment, failing to capture the fine-level dependencies between image-text pairs. This limitation restricts their generalization in many downstream CPath tasks. In this paper, we propose a novel approach that enhances the capture of finer-level context through language priors, which better represent the fine-grained tissue morphological structures in histology images. We propose a Context-guided Vision-Language Model (ConVLM) that generates contextually relevant visual embeddings from histology images. ConVLM achieves this by employing context-guided token learning and token pruning modules to identify and eliminate contextually irrelevant visual tokens, refining the visual representation. These two modules are integrated into various layers of the ConVLM encoders to progressively learn context-guided visual embeddings, enhancing visual-language interactions. The model is trained end-to-end using a context-guided token learning based loss function. We conducted extensive experiments on 20 histopathology datasets, evaluating both Region of Interest (ROI)-level and cancer subtype WSI-level classification tasks. The results indicate that ConVLM significantly outperforms existing State-of-the-Art (SOTA) vision-language and foundational models
 
 ## Environment Setup 
 
 This setup is tested only on Linux.
 
-1. Clone this repository and navigate to MR-PLIP
+1. Clone this repository and navigate to ConVLM
 ```
-git clone https://github.com/BasitAlawode/MR-PLIP.git MR-PLIP
-cd MR-PLIP
+git clone https://github.com/BasitAlawode/ConVLM.git ConVLM
+cd ConVLM
 ```
 
 2. Install Packages
 ```
-conda create -n mrplip python=3.10 -y
-conda activate mrplip
+conda create -n convlm python=3.10 -y
+conda activate convlm
 pip install --upgrade pip  # enable PEP 660 support
 pip install -e .
 ```
@@ -29,18 +28,18 @@ pip install -e .
 
 1. open generate_text.py in your favourite text editor
 
-2. Give the path to the images folder by editing line 25.
+2. Give the path to the images folder by editing line 19.
 
 3. In this work, we have answered the question:
 ```
-questions = ["Can you describe the main features visible in this histopathology image "]
+questions = ["Can you provide a concise description of the histopathology image shown?"]
 ```
 and the following Quilt-LlaVA configuration has been used:
 ```
 ckpt = "wisdomik/Quilt-Llava-v1.5-7b"
 temp, conv_mode = 0, "vicuna_v1"
 ```
-You can change this to the Quilt-LlaVA model you want to use (see lines 28 and 29). 
+You can change this to the Quilt-LlaVA model you want to use (see lines 22 and 23). 
 
 4. Run:
 

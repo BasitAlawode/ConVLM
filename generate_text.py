@@ -14,13 +14,7 @@ from llava.mm_utils import tokenizer_image_token, get_model_name_from_path, Keyw
 from PIL import Image
 import math
 
-#questions = ["Can you describe the main features visible in this histopathology image?",
-#             "Can you provide a concise description of the histopathology image shown?"]
-#image_folder = "test_images"
-#answers_dir = [f"{image_folder}_answers/main",
-#               f"{image_folder}_answers/concise"]
-
-questions = ["Can you describe the main features visible in this histopathology image?"]
+questions = ["Can you provide a concise description of the histopathology image shown?"]
 
 image_folder = "test_images_sup"
 answers_dir = [f"{image_folder}_answers/main"]
