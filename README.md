@@ -56,29 +56,29 @@ pip install -e .
 2. Give the path to the images folder by editing line 19.
 
 3. In this work, we have answered the question:
-```
-questions = ["Can you provide a concise description of the histopathology image shown?"]
-```
-and the following Quilt-LlaVA configuration has been used:
-```
-ckpt = "wisdomik/Quilt-Llava-v1.5-7b"
-temp, conv_mode = 0, "vicuna_v1"
-```
-You can change this to the Quilt-LlaVA model you want to use (see lines 22 and 23). 
+    ```
+    questions = ["Can you provide a concise description of the histopathology image shown?"]
+    ```
+    and the following Quilt-LlaVA configuration has been used:
+    ```
+    ckpt = "wisdomik/Quilt-Llava-v1.5-7b"
+    temp, conv_mode = 0, "vicuna_v1"
+    ```
+    You can change this to the Quilt-LlaVA model you want to use (see lines 22 and 23). 
 
 4. Run:
 
-```
-python generate_text.py
-```
+    ```
+    python generate_text.py
+    ```
 
 ## 5. ConVLM for training and inference
 1. Modify the config file by adding the dataset name, and embedding dimensions.
 
 2. Run the following script for the training of ConVLM:
-```
-python train.py
-```
+    ```
+    python train.py
+    ```
 
 3. Inference
 
