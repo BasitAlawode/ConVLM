@@ -34,6 +34,8 @@ hf_hub_download("MahmoodLab/UNI", filename="pytorch_model.bin", local_dir=local_
 model = timm.create_model(
     "vit_large_patch16_224", img_size=224, patch_size=16, init_values=1e-5, num_classes=0, dynamic_img_size=True
 )
+
+device = 'cuda'
 model.load_state_dict(torch.load(os.path.join(local_dir, "pytorch_model.bin"), map_location="cpu"), strict=True)
 model.eval()
 model.to(device)
@@ -53,8 +55,8 @@ model, transform = get_encoder(enc_name='uni', device=device)
 dataroot = '/content/drive/MyDrive/ConVLM_data/NSCLC_TCGA'
 
 # create some image folder datasets for train/test and their data laoders
-train_dataset = torchvision.datasets.ImageFolder(j_(dataroot, 'train'), transform=transform)
-test_dataset = torchvision.datasets.ImageFolder(j_(dataroot, 'test'), transform=transform)
+train_dataset = torchvision.datasets.ImageFolder(os.path.join(dataroot, 'train'), transform=transform)
+test_dataset = torchvision.datasets.ImageFolder(os.path.join(dataroot, 'test'), transform=transform)
 train_dataloader = torch.utils.data.DataLoader(train_dataset, batch_size=4, shuffle=False)
 test_dataloader = torch.utils.data.DataLoader(test_dataset, batch_size=4, shuffle=False)
 

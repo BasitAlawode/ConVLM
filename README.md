@@ -40,14 +40,13 @@ pip install -e .
 2. Dataset for WSI is prepared by segmenting the tissue region and making ROI patches using [CLAM](https://github.com/mahmoodlab/CLAM).
 
 
-## 3. Vision Features are Extracted using following:
+## 3. Visual Feature Extraction
 
 1. The  visual features for patch-level and ROI-level are extracted using [UNI model](https://github.com/mahmoodlab/UNI).
     
     ```
      python ConVLM_visual_feature_extraction.py
      ```
-
 
 ## 4. Text Generation with [Quilt-LLaVA]( https://quilt-llava.github.io/)
 
