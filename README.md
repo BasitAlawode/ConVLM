@@ -12,18 +12,24 @@ Vision-Language Models (VLMs) have recently demonstrated exceptional results acr
 This setup is tested only on Linux.
 
 1. Clone this repository and navigate to ConVLM
-```
-git clone https://github.com/BasitAlawode/ConVLM.git ConVLM
-cd ConVLM
-```
+    ```
+    git clone https://github.com/BasitAlawode/ConVLM.git ConVLM
+    cd ConVLM
+    ```
 
 2. Install Packages
-```
-conda create -n convlm python=3.10 -y
-conda activate convlm
-pip install --upgrade pip  # enable PEP 660 support
-pip install -e .
-```
+    ```
+    conda create -n convlm python=3.10 -y
+    conda activate convlm
+    pip install --upgrade pip  # enable PEP 660 support
+    pip install -e .
+    ```
+    Install [UNI library](https://github.com/mahmoodlab/UNI)
+    ```
+    git clone https://github.com/mahmoodlab/UNI.git
+    cd UNI
+    pip install -e .
+    ```
 
 ## 2. Dataset Preparation
 
@@ -72,14 +78,17 @@ pip install -e .
     ```
 
 ## 5. ConVLM for training and inference
-1. Modify the config file by adding the dataset name, and embedding dimensions.
+1. Modify the config file by changing the dataset name, and embedding dimensions.
 
-2. Run the following script for the training of ConVLM:
+2. Training ConVLM: Run
     ```
     python train.py
     ```
 
-3. Inference
+3. Inference: Run
+    ```
+    python test_CAM16.py
+    ```
 
 
 ## 6. Performance Comparison
